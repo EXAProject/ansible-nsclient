@@ -1,11 +1,13 @@
 # tasks file for NSClient++
 ---
+- hosts: all
+  tasks:
 
-- name: Download "NSClient++"
-  win_get_url:
-    url: "https://github.com/mickem/nscp/releases/download/0.5.0.62/NSCP-0.5.0.62-x64.msi"
-    dest: "C:\\NSCP-0.5.0.62-x64.msi"
-  when: not msipackagestat.stat.exists
+    - name: Download "NSClient++"
+      win_get_url:
+        url: "https://github.com/mickem/nscp/releases/download/0.5.0.62/NSCP-0.5.0.62-x64.msi"
+        dest: "C:\\NSCP-0.5.0.62-x64.msi"
+        when: not msipackagestat.stat.exists
 
 - name: Install "NSClient++"
   win_package:
