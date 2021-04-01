@@ -2,8 +2,8 @@
 ---
 - hosts: all
   tasks:
-     - name: Create setup folder
-        win_file:
+    - name: Create setup folder
+      win_file:
         path: C:\setup
         state: directory
 
