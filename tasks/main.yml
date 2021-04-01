@@ -34,5 +34,5 @@
 
     - name: Ensure NSClient++ is running
       win_service:
-      name: nscp
-      state: started
+        name: nscp
+        state: started
