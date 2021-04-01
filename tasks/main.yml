@@ -19,7 +19,7 @@
       when: not msipackagestat.stat.exists
 
     - name: Install "NSClient++"
-      win_msi:
+      win_package:
         path: "C:\\setup\\NSCP-0.5.0.62-x64.msi"
         wait: True
       when: not msipackagestat.stat.exists
