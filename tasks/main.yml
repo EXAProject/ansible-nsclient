@@ -9,25 +9,25 @@
 
     - name: Check for "NSClient++"
       win_stat:
-        path: "c:\\setup\\NSCP-0.5.0.62-x64.msi"
+        path: "c:\\setup\\NSCP-0.4.1.090-x64.msi"
       register: msipackagestat
 
     - name: Download "NSClient++"
       win_get_url:
-        url: "https://github.com/mickem/nscp/releases/download/0.5.0.62/NSCP-0.5.0.62-x64.msi"
-        dest: "C:\\setup\\NSCP-0.5.0.62-x64.msi"
+        url: "https://github.com/mickem/nscp/releases/download/0.4.1.90/NSCP-0.4.1.090-x64.msi"
+        dest: "C:\\setup\\NSCP-0.4.1.090-x64.msi"
       when: not msipackagestat.stat.exists
 
     - name: Install "NSClient++"
       win_package:
-        path: "C:\\setup\\NSCP-0.5.0.62-x64.msi"
+        path: "C:\\setup\\NSCP-0.4.1.090-x64.msi"
       when: not msipackagestat.stat.exists
 
     - name: Update NSClient++ configuration
       win_template:
-        src: programfiles/nsclient/nsclient.ini.j2
+        src: ../files/nsclient.ini
         dest: "C:\\Program Files\\NSClient++\\nsclient.ini"
-      notify: restart nsclient
+      notify: restart nscp
       tags:
         - configuration
 
